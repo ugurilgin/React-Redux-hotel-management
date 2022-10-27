@@ -1,0 +1,74 @@
+import React from 'react'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { styled } from '@mui/material/styles';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
+import { deleteRoom } from './actions';
+import  {useDispatch,useSelector} from "react-redux"
+import { loadRooms } from './actions';
+function RoomCard(props) {
+    const ExpandMore = styled((props) => {
+        const { expand, ...other } = props;
+        return <IconButton {...other} />;
+      })(({ theme, expand }) => ({
+        transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shortest,
+        }),
+      }));
+    // Button  onclick={()=>handleDelete(room.id)};
+  let dispatch=useDispatch();
+
+  const handleDelete=(id)=>{
+if(window.confirm("Are sure wanted to delete to the user?"))
+{
+  dispatch(deleteRoom(id));
+  window.location.reload();
+}
+  }  
+  return (
+    <Box sx={{ minWidth: 200,maxWidth:200 }}>
+                    <Card  variant="outlined">
+                    <React.Fragment>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {props.firstName}
+            </Typography>
+            <Typography variant="h5" component="div">
+            lastname
+            </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              adjective
+            </Typography>
+            <Typography variant="body2">
+              well meaning and kindly.
+              <br />
+              {'"a benevolent smile"'}
+            </Typography>
+          </CardContent>
+          <CardActions>
+          <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            <ExpandMore >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
+        </React.Fragment>
+
+                    </Card>
+                    </Box>
+  )
+}
+
+export default RoomCard
