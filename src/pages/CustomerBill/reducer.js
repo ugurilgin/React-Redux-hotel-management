@@ -1,42 +1,42 @@
 import * as types from "../../redux/actionType";
 
-const MEAL_INITIAL_STATE={
-    meals:[],
-    meal:{},
+const BILL_INITIAL_STATE={
+    bills:[],
+    bill:{},
     error:"",
     loading:true,
 };
 
-const mealReducer=(state=MEAL_INITIAL_STATE,action)=>{
+const billReducer=(state=BILL_INITIAL_STATE,action)=>{
 switch(action.type){
-    case types.GET_MEALS:
+    case types.GET_BILLS:
         return{ 
             ...state,
-            meals:action.payload,
+            bills:action.payload,
             error:"",
             loading:false,
             
         };
-    case types.GET_ONE_MEAL:
+    case types.GET_ONE_BILL:
         return{ 
             ...state,
-            meal:action.payload,
+            bill:action.payload,
             error:"",
             loading:false,
         };
-    case types.DELETE_MEAL:
+    case types.DELETE_BILL:
         return{ 
             ...state,
             error:"",
             loading:false,
         }; 
-    case types.CREATE_MEAL:
+    case types.CREATE_BILL:
         return{ 
             ...state,
             error:"",
             loading:false,
         }; 
-    case types.UPDATE_MEAL:
+    case types.UPDATE_BILL:
         return{ 
             ...state,
             error:"",
@@ -52,4 +52,4 @@ default:
     return state;
 }
 };
-export default mealReducer;
+export default billReducer;

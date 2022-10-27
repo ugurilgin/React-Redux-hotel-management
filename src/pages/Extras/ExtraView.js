@@ -51,6 +51,7 @@ function getdata(datam)
         dataChart.push(
             {
                 'id':data.id,
+                'label':data.name,
                 'name':data.name,
                 'price':data.price,
             }

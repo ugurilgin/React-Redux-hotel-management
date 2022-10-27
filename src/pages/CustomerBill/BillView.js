@@ -1,22 +1,25 @@
 import React,{useEffect, useState} from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import {useDispatch, useSelector} from 'react-redux';
-import { deleteMeal, loadMeals } from './actions';
+import { deleteBill,  loadBills } from './actions';
 import {  IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 
-function MealView() {
+function BillView() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
     const [errorW,setErrorW]=useState("");
-    const {error} =useSelector(state=>state.mealData);
+    const {error} =useSelector(state=>state.billData);
  
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'name', headerName: 'First name', width: 130 },
-  { field: 'price', headerName: 'Last name', width: 130 },
+  { field: 'count', headerName: 'Count(Person)', width: 130 },
+  { field: 'entryDate', headerName: 'Entry Date', width: 130 },
+  { field: 'exitDate', headerName: 'Exit Date', width: 130 },
+  { field: 'customerId', headerName: 'CustomerId', width: 130 },
+  { field: 'roomId', headerName: 'Room Id', width: 130 },
   {field: 'buttons',headerName: 'Actions',width: 150,renderCell:(cellValues)=>{
     return(
         <div>
@@ -24,14 +27,14 @@ const columns = [
   <DeleteIcon onClick={()=>{
   if(window.confirm("Do you really wanna delete it?"))
     {   
-        dispatch(deleteMeal(cellValues.id));
+        dispatch(deleteBill(cellValues.id));
         console.log(cellValues.id);
     }
   }}/>
 </IconButton> 
   <IconButton aria-label="edit">
   <EditIcon onClick={() => {
-    navigate("../editMeal/"+cellValues.id);
+    navigate("../editBill/"+cellValues.id);
   }}/>
 </IconButton>  
         </div>
@@ -39,9 +42,9 @@ const columns = [
   }},
 ];
 
-const {meals} =useSelector(state=>state.serviceData)
+const {bills} =useSelector(state=>state.billData)
 useEffect(()=>{
-   dispatch(loadMeals());
+   dispatch(loadBills());
 },[]);
 
 function getdata(datam)
@@ -51,9 +54,12 @@ function getdata(datam)
         dataChart.push(
             {
                 'id':data.id,
-                'label':data.name,
-                'name':data.name,
-                'price':data.price,
+                'label':data.count,
+                'count':data.count,
+                'entryDate':data.entryDate,
+                'exitDate':data.exitDate,
+                'customerId':data.customerId,
+                'roomId':data.roomId,
             }
         )});
   
@@ -63,7 +69,7 @@ function getdata(datam)
   return (
     <div>
           <Typography level="h4" component="h1" sx={{ m:3 }}>
-              <b  >Services</b>
+              <b  >Bills</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
               {error && <h3 style={{color:"red"}}>{error}</h3>}
             </Typography>
@@ -71,7 +77,7 @@ function getdata(datam)
     <div style={{ height: 500, width: '100%' }}>
 
       <DataGrid
-        rows={getdata(meals)}
+        rows={getdata(bills)}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
@@ -84,4 +90,4 @@ function getdata(datam)
 
 }
 
-export default MealView
+export default BillView

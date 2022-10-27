@@ -20,7 +20,7 @@ switch(action.type){
     case types.GET_ONE_EXTRA:
         return{ 
             ...state,
-            extras:action.payload,
+            extra:action.payload,
             error:"",
             loading:false,
         };

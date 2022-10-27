@@ -95,7 +95,7 @@ export const loadMeals=() =>{
                         
                         console.log(response);
                       
-                        if(response.startDate)
+                        if(response.price)
                         {dispatch(createdMeal());}
                         else{
                             console.log(response.status);
@@ -123,7 +123,7 @@ export const loadMeals=() =>{
                         
                             console.log(response);
                        
-                            if(response.startDate)
+                            if(response.price)
                             {dispatch(updatedMeal());}
                             else{
                                 console.log(response.status);

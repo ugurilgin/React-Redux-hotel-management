@@ -95,7 +95,7 @@ export const loadExtras=() =>{
                         
                         console.log(response);
                       
-                        if(response.startDate)
+                        if(response.price)
                         {dispatch(createdExtra());}
                         else{
                             console.log(response.status);
@@ -113,7 +113,7 @@ export const loadExtras=() =>{
               
                 
             };
-            export const editMeal=(id,extra) =>{
+            export const editExtra=(id,extra) =>{
 
                 return function(dispatch)
                 {console.log("It is working");
@@ -123,7 +123,7 @@ export const loadExtras=() =>{
                         
                             console.log(response);
                        
-                            if(response.startDate)
+                            if(response.price)
                             {dispatch(updatedExtra());}
                             else{
                                 console.log(response.status);

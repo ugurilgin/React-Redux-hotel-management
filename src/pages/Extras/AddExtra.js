@@ -12,7 +12,7 @@ function AddExtra() {
   const [name,setName]=useState();
   const dispatch=useDispatch();
   const [errorW,setErrorW]=useState("");
-  const {error} =useSelector(state=>state.exraData)
+  const {error} =useSelector(state=>state.extraData)
 
   const handleSubmit=(e)=>
   {e.preventDefault();

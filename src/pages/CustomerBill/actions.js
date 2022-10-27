@@ -1,39 +1,39 @@
 import * as types from "../../redux/actionType";
 import * as httpClient from "../../services/HttpClient/HttpClient"
 
-const getServices=(services)=>({
-type:types.GET_SERVICES,
-payload:services,
-});
-const getOneService=(service)=>({
-    type:types.GET_ONE_SERVICE,
-    payload:service,
+const getBills=(bills)=>({
+    type:types.GET_BILLS,
+    payload:bills,
     });
-const deletedService=()=>({
-    type:types.DELETE_SERVICE,
+const getOneBill=(bill)=>({
+    type:types.GET_ONE_BILL,
+    payload:bill,
+    });
+const deletedBill=()=>({
+    type:types.DELETE_BILL,
     });
 
-const createdService=()=>({
-    type:types.CREATE_SERVICE,
+const createdBill=()=>({
+    type:types.CREATE_BILL,
         });
-const updatedService=()=>({
-    type:types.UPDATE_SERVICE,
+const updatedBill=()=>({
+    type:types.UPDATE_BILL,
         });
 const errorHandle=(error)=>({
     type:types.ERROR,
     payload:error,
 });
 
-export const loadServices=() =>{
+export const loadBills=() =>{
 
     return function(dispatch)
     {console.log("It is working");
-        httpClient.GetWithAuth("services/").then(res => res.json())
+        httpClient.GetWithAuth("bill/").then(res => res.json())
         .then(
             (result) => {
                 
                 console.log(result);
-                dispatch(getServices(result));
+                dispatch(getBills(result));
             },
             (error) => {
                 dispatch(errorHandle(error));
@@ -44,16 +44,16 @@ export const loadServices=() =>{
       
         
     };
-    export const loadOneService=(id) =>{
+    export const loadOneBill=(id) =>{
 
         return function(dispatch)
         {console.log("It is working");
-            httpClient.GetWithAuth("services/"+id+"/").then(res => res.json())
+            httpClient.GetWithAuth("bill/"+id+"/").then(res => res.json())
             .then(
                 (result) => {
                     
                     console.log(result);
-                    dispatch(getOneService(result));
+                    dispatch(getOneBill(result));
                 },
                 (error) => {
                     dispatch(errorHandle(error));
@@ -64,17 +64,17 @@ export const loadServices=() =>{
           
             
         };
-    export const deleteService=(id) =>{
+    export const deleteBill=(id) =>{
 
         return function(dispatch)
         {console.log("It is working");
-            httpClient.DeleteWithAuth("services/",id).then(res => res.json())
+            httpClient.DeleteWithAuth("bill/",id).then(res => res.json())
             .then(
                 (result) => {
                     
                     console.log(result);
-                    dispatch(deletedService());
-                    dispatch(loadServices());
+                    dispatch(deletedBill());
+                    dispatch(loadBills());
                 },
                 (error) => {
                     dispatch(errorHandle(error));
@@ -85,18 +85,18 @@ export const loadServices=() =>{
           
             
         };
-        export const createService=(service) =>{
+        export const createBill=(bill) =>{
 
             return function(dispatch)
             {console.log("It is working");
-                httpClient.PostWithAuth("services/",service).then(response => response.json())
+                httpClient.PostWithAuth("bill/",bill).then(response => response.json())
                 .then(
                     (response) => {
                         
                         console.log(response);
                       
-                        if(response.price)
-                        {dispatch(createdService());}
+                        if(response.sumAll)
+                        {dispatch(createdBill());}
                         else{
                             console.log(response.status);
                             dispatch(errorHandle(response.message));
@@ -113,18 +113,18 @@ export const loadServices=() =>{
               
                 
             };
-            export const editService=(id,service) =>{
+            export const editBill=(id,bill) =>{
 
                 return function(dispatch)
                 {console.log("It is working");
-                    httpClient.PutWithAuth("services/"+id,service).then(response => response.json())
+                    httpClient.PutWithAuth("extras/"+id,bill).then(response => response.json())
                     .then(
                         (response) => {
                         
                             console.log(response);
                        
-                            if(response.price)
-                            {dispatch(updatedService());}
+                            if(response.sumAll)
+                            {dispatch(updatedBill());}
                             else{
                                 console.log(response.status);
                                 dispatch(errorHandle(response.message));

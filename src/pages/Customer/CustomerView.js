@@ -6,6 +6,7 @@ import {  IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 function CustomerView() {
     const navigate = useNavigate();
@@ -41,6 +42,11 @@ const columns = [
     navigate("../editCustomer/"+cellValues.id);
   }}/>
 </IconButton>  
+ <IconButton aria-label="attributes">
+  <AutoFixHighIcon onClick={() => {
+    navigate("../customerExtras/"+cellValues.id);
+  }}/>
+</IconButton>
         </div>
     );
   }},
@@ -58,6 +64,7 @@ function getdata(datam)
         dataChart.push(
             {
                 'id':data.id,
+                'label':data.name,
                 'name':data.name,
                 'surname':data.surname,
                 'gender':data.gender,

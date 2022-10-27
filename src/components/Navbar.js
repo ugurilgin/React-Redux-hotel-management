@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pagesLogin = ['Rooms', 'Employees', 'Services', 'Meals','Customer', 'Extras'];
+const pagesLogin = ['Rooms', 'Employees', 'Services', 'Meals','Customers','CustomerBills', 'Extras'];
 
 const pages = ['Login', 'Register'];
 

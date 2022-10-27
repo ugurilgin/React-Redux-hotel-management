@@ -31,16 +31,8 @@ const columns = [
   {field: 'buttons',headerName: 'Actions',width: 150,renderCell:(cellValues)=>{
     return(
         <div>
-        <IconButton aria-label="delete">
-  <DeleteIcon onClick={()=>{
-  if(window.confirm("Do you really wanna delete it?"))
-    {   
-        dispatch(deleteEmployee(cellValues.id));
-        console.log(cellValues.id);
-    }
-  }}/>
-
-</IconButton> 
+   
+ 
   <IconButton aria-label="edit">
   <EditIcon onClick={() => {
     navigate("../editEmployee/"+cellValues.id);

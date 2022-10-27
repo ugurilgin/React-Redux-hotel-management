@@ -6,6 +6,7 @@ import customerReducer from "../pages/Customer/reducer";
 import serviceReducer from "../pages/Services/reducer";
 import mealReducer from "../pages/Meals/reducer";
 import extraReducer from "../pages/Extras/reducer";
+import billReducer from "../pages/CustomerBill/reducer";
 const rootReducer =combineReducers({
     roomData:roomReducer,
     authData:authReducer,
@@ -14,5 +15,6 @@ const rootReducer =combineReducers({
     serviceData:serviceReducer,
     mealData:mealReducer,
     extraData:extraReducer,
+    billData:billReducer,
 });
 export default rootReducer;
