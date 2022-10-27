@@ -20,7 +20,7 @@ function EditCustomer() {
   const dispatch=useDispatch();
   const [errorW,setErrorW]=useState("");
   const [success,setSuccess]=useState("");
-  const {error} =useSelector(state=>state.employeeData)
+  const {error} =useSelector(state=>state.customerData)
 
   const genderList = () => [
       { label: 'Female' },
