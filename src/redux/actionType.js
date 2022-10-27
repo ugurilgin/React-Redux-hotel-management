@@ -43,3 +43,11 @@ export const UPDATE_MEAL="UPDATE_MEAL";
 export const CREATE_MEAL="CREATE_MEAL";
 export const GET_MEAL="GET_MEAL";
 export const GET_ONE_MEAL="GET_ONE_MEAL";
+
+         /* EXTRA TYPES */
+export const GET_EXTRAS="GET_EXTRAS";
+export const DELETE_EXTRA="DELETE_EXTRA";
+export const UPDATE_EXTRA="UPDATE_EXTRA";
+export const CREATE_EXTRA="CREATE_EXTRA";
+export const GET_EXTRA="GET_EXTRA";
+export const GET_ONE_EXTRA="GET_ONE_EXTRA";
