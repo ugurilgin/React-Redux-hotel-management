@@ -9,7 +9,7 @@ const EMPLOYEE_INITIAL_STATE={
 
 const employeeReducer=(state=EMPLOYEE_INITIAL_STATE,action)=>{
 switch(action.type){
-    case types.GET_EMPLOYEE:
+    case types.GET_EMPLOYEES:
         return{ 
             ...state,
             employees:action.payload,

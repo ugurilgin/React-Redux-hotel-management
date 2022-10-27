@@ -5,9 +5,9 @@ import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import {useDispatch, useSelector} from 'react-redux';
-import { editService, loadOneService,  } from './actions';
+import { editMeal, loadOneMeal,  } from './actions';
 import { useNavigate, useParams } from 'react-router-dom';
-function EditService() {
+function EditMeal() {
   const navigate = useNavigate();
   let {id}=useParams();
   const [name,setName]=useState();
@@ -15,11 +15,11 @@ function EditService() {
   const dispatch=useDispatch();
   const [errorW,setErrorW]=useState("");
   const [success,setSuccess]=useState("");
-  const {error} =useSelector(state=>state.serviceData)
+  const {error} =useSelector(state=>state.mealData)
 
-  const {service}=useSelector((state)=>state.serviceData);
+  const {service}=useSelector((state)=>state.mealData);
   useEffect(()=>{
-      dispatch(loadOneService(id))
+      dispatch(loadOneMeal(id))
 
   },[]);
   useEffect(()=>{
@@ -44,10 +44,10 @@ function EditService() {
           setErrorW("Please Fill all fields");
       }
       else{
-        dispatch(editService(id,jsonData));
+        dispatch(editMeal(id,jsonData));
           setErrorW(error.message)
         setSuccess("Succesfully Updated");
-          //navigate('/service');
+          //navigate('/meals');
 
       }
   }
@@ -110,4 +110,4 @@ function EditService() {
   )
 }
 
-export default EditService
+export default EditMeal

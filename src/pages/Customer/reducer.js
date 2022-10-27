@@ -9,7 +9,7 @@ const CUSTOMER_INITIAL_STATE={
 
 const customerReducer=(state=CUSTOMER_INITIAL_STATE,action)=>{
 switch(action.type){
-    case types.GET_CUSTOMER:
+    case types.GET_CUSTOMERS:
         return{ 
             ...state,
             customers:action.payload,

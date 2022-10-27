@@ -35,3 +35,11 @@ export const UPDATE_SERVICE="UPDATE_SERVICE";
 export const CREATE_SERVICE="CREATE_SERVICE";
 export const GET_SERVICE="GET_SERVICE";
 export const GET_ONE_SERVICE="GET_ONE_SERVICE";
+
+         /* MEAL TYPES */
+export const GET_MEALS="GET_MEALS";
+export const DELETE_MEAL="DELETE_MEAL";
+export const UPDATE_MEAL="UPDATE_MEAL";
+export const CREATE_MEAL="CREATE_MEAL";
+export const GET_MEAL="GET_MEAL";
+export const GET_ONE_MEAL="GET_ONE_MEAL";

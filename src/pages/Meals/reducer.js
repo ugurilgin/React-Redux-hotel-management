@@ -1,42 +1,42 @@
 import * as types from "../../redux/actionType";
 
-const SERVICE_INITIAL_STATE={
-    services:[],
-    service:{},
+const MEAL_INITIAL_STATE={
+    meals:[],
+    meal:{},
     error:"",
     loading:true,
 };
 
-const serviceReducer=(state=SERVICE_INITIAL_STATE,action)=>{
+const mealReducer=(state=MEAL_INITIAL_STATE,action)=>{
 switch(action.type){
-    case types.GET_SERVICES:
+    case types.GET_MEALS:
         return{ 
             ...state,
-            services:action.payload,
+            meals:action.payload,
             error:"",
             loading:false,
             
         };
-    case types.GET_ONE_SERVICE:
+    case types.GET_ONE_MEAL:
         return{ 
             ...state,
-            service:action.payload,
+            meals:action.payload,
             error:"",
             loading:false,
         };
-    case types.DELETE_SERVICE:
+    case types.DELETE_MEAL:
         return{ 
             ...state,
             error:"",
             loading:false,
         }; 
-    case types.CREATE_SERVICE:
+    case types.CREATE_MEAL:
         return{ 
             ...state,
             error:"",
             loading:false,
         }; 
-    case types.UPDATE_SERVICE:
+    case types.UPDATE_MEAL:
         return{ 
             ...state,
             error:"",
@@ -52,4 +52,4 @@ default:
     return state;
 }
 };
-export default serviceReducer;
+export default mealReducer;

@@ -11,7 +11,7 @@ function ServiceView() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
     const [errorW,setErrorW]=useState("");
-    const {error} =useSelector(state=>state.customerData);
+    const {error} =useSelector(state=>state.serviceData);
  
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
