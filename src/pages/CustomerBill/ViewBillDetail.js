@@ -31,7 +31,7 @@ function ViewBillDetail() {
   const [roomType,setRoomType]=useState("");
   const [sumRoomPrice,setSumRoomPrice]=useState("");
   const [sumExtras,setSumExtras]=useState("");
-  const [sumMeals,setSumMeals]=useState("");
+  const [sumMeals,setSumMeals]=useState();
   const [sumServices,setSumServices]=useState("");
   const [sumAll,setSumAll]=useState("");
   const [errorW,setErrorW]=useState("");
@@ -71,6 +71,7 @@ function ViewBillDetail() {
     setSumMeals(bill.sumMeals);
     setSumServices(bill.sumServices);
     setSumAll(bill.sumAll);
+    console.log(bill.sumMeals);
     }
     else
     {setErrorW("Something is wrong");}
@@ -178,7 +179,7 @@ multiline rows={6}
 
           id="filled-read-only-input"
           sx={{width:600,}}
-          value={" Sum of Meal Prices : "+{sumMeals}+"\n Sum of Extras Prices : "+sumExtras+"\n Sum of Services Prices : "+sumServices+"\n Sum of Room Price : "+sumRoomPrice+"\n Total Price : "+sumAll}
+          value={" Sum of Meal Prices : "+sumMeals+"\n Sum of Extras Prices : "+sumExtras+"\n Sum of Services Prices : "+sumServices+"\n Sum of Room Price : "+sumRoomPrice+"\n Total Price : "+sumAll}
           InputProps={{
             readOnly: true,
           }}
