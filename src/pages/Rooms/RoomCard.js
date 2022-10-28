@@ -5,14 +5,16 @@ import { styled } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { deleteRoom } from './actions';
 import  {useDispatch,useSelector} from "react-redux"
 import { loadRooms } from './actions';
+import { useNavigate } from 'react-router-dom';
 function RoomCard(props) {
+  const navigate=useNavigate();
     const ExpandMore = styled((props) => {
         const { expand, ...other } = props;
         return <IconButton {...other} />;
@@ -30,39 +32,45 @@ function RoomCard(props) {
 if(window.confirm("Are sure wanted to delete to the user?"))
 {
   dispatch(deleteRoom(id));
-  window.location.reload();
+window.location.reload();
 }
   }  
   return (
-    <Box sx={{ minWidth: 200,maxWidth:200 }}>
-                    <Card  variant="outlined">
+    <Box sx={{ minWidth: 200,maxWidth:200 }} >
+                    <Card  variant="outlined"  >
                     <React.Fragment>
-          <CardContent>
+          <CardContent >
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {props.firstName}
+            {props.statue}
             </Typography>
             <Typography variant="h5" component="div">
-            lastname
+            {"Number: "+props.roomNumber}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
+            {props.type}
             </Typography>
             <Typography variant="body2">
-              well meaning and kindly.
+              {props.clean}
               <br />
-              {'"a benevolent smile"'}
+              {props.employee}
             </Typography>
           </CardContent>
           <CardActions>
           <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
+              <EditIcon onClick={()=>{
+                navigate("../editRoom/"+props.roomId);
+              }}/>
             </IconButton>
             <IconButton aria-label="share">
-              <ShareIcon />
+              <DeleteIcon onClick={()=>{
+               if(window.confirm("Are sure wanted to delete to the user?"))
+{
+  dispatch(deleteRoom(props.roomId));
+window.location.reload();
+}
+              }}/>
             </IconButton>
-            <ExpandMore >
-              <ExpandMoreIcon />
-            </ExpandMore>
+           
           </CardActions>
         </React.Fragment>
 

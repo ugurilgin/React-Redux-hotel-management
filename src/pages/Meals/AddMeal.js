@@ -7,11 +7,12 @@ import { createMeal } from './actions';
 import { useNavigate } from 'react-router-dom';
 function AddMeal() {
   const navigate = useNavigate();
-  const [success,setSuccess]=useState("");
+  
   const [price,setPrice]=useState("");
   const [name,setName]=useState();
   const dispatch=useDispatch();
   const [errorW,setErrorW]=useState("");
+  const [success,setSuccess]=useState("");
   const {error} =useSelector(state=>state.mealData)
 
   const handleSubmit=(e)=>

@@ -6,7 +6,8 @@ import {  IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 function EmployeeView() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
@@ -75,13 +76,15 @@ function getdata(datam)
 }
 
   return (
-    <div>
+    <div><Fab  href="/addEmployee" sx={{ l:50,m:3 }} color="primary" aria-label="add" >
+    <AddIcon/> 
+  </Fab>
           <Typography level="h4" component="h1" sx={{ m:3 }}>
               <b  >Employees</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
               {error && <h3 style={{color:"red"}}>{error}</h3>}
             </Typography>
-   
+            
     <div style={{ height: 500, width: '100%' }}>
 
       <DataGrid

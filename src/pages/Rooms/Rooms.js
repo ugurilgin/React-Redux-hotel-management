@@ -45,11 +45,11 @@ import { loadEmployees } from '../Employee/actions';
      
         <Grid container justifyContent="center" spacing={5}>
 
-            {_DATA.currentData().map(v => {
+            {rooms.map(v => {
           return (
             <Grid key={v.id} item>
             
-            <RoomCard firstName={v.firstName}/>
+            <RoomCard  roomId={v.id} roomNumber={v.roomNumber} statue={v.statue} clean={v.clean} type={v.type} />
             </Grid>
           );
         })}

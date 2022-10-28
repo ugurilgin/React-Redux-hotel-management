@@ -7,7 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 function CustomerView() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
@@ -32,7 +33,7 @@ const columns = [
   if(window.confirm("Do you really wanna delete it?"))
     {   
         dispatch(deleteCustomer(cellValues.id));
-        console.log(cellValues.id);
+        window.location.reload();
     }
   }}/>
 
@@ -80,12 +81,15 @@ function getdata(datam)
 
   return (
     <div>
+       <Fab  href="/addCustomer" sx={{ l:50,m:3 }} color="primary" aria-label="add" >
+        <AddIcon/> 
+      </Fab>
           <Typography level="h4" component="h1" sx={{ m:3 }}>
               <b  >Customers</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
               {error && <h3 style={{color:"red"}}>{error}</h3>}
             </Typography>
-   
+         
     <div style={{ height: 500, width: '100%' }}>
 
       <DataGrid

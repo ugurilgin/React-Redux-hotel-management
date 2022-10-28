@@ -6,7 +6,8 @@ import {  IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 function ExtraView() {
     const navigate = useNavigate();
     const dispatch=useDispatch();
@@ -20,15 +21,7 @@ const columns = [
   {field: 'buttons',headerName: 'Actions',width: 150,renderCell:(cellValues)=>{
     return(
         <div>
-        <IconButton aria-label="delete">
-  <DeleteIcon onClick={()=>{
-  if(window.confirm("Do you really wanna delete it?"))
-    {   
-        dispatch(deleteExtra(cellValues.id));
-        console.log(cellValues.id);
-    }
-  }}/>
-</IconButton> 
+      
   <IconButton aria-label="edit">
   <EditIcon onClick={() => {
     navigate("../editExtra/"+cellValues.id);
@@ -62,12 +55,15 @@ function getdata(datam)
 
   return (
     <div>
+      <Fab  href="/addExtra" sx={{ l:50,m:3 }} color="primary" aria-label="add" >
+        <AddIcon/> 
+      </Fab>
           <Typography level="h4" component="h1" sx={{ m:3 }}>
               <b  >Services</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
               {error && <h3 style={{color:"red"}}>{error}</h3>}
             </Typography>
-   
+          
     <div style={{ height: 500, width: '100%' }}>
 
       <DataGrid

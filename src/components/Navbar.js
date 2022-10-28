@@ -45,12 +45,14 @@ function Navbar() {
   
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
-      localStorage.removeItem("tokenKey");
-      localStorage.removeItem("username");
-      localStorage.removeItem("email");
-      setLogin(false);
+     
     };
-  
+  const logOutHandle=()=>{
+    localStorage.removeItem("tokenKey");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    setLogin(false);
+  }
     return (
       <AppBar position="static">
         <Container maxWidth="xl">
@@ -192,7 +194,7 @@ function Navbar() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => ( 
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={logOutHandle}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

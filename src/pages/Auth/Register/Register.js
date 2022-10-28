@@ -51,7 +51,7 @@ const handleSubmit=(e)=>
         <Sheet
           sx={{
             width: 400,
-           height:400,
+           height:600,
             mx: 'auto', // margin left & right
             my: 4, // margin top & botom
             py: 3, // padding top & bottom
@@ -85,7 +85,7 @@ const handleSubmit=(e)=>
             type="text"
             placeholder="surname"
             label="Surname"
-            value={password}
+            value={surname}
             onChange={(newValue)=>setSurname(newValue.target.value)}
           />
           <TextField

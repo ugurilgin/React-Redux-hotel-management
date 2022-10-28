@@ -11,14 +11,15 @@ import { useNavigate } from 'react-router-dom';
 function AddRoom() {
     const navigate = useNavigate();
     const [errorW,setErrorW]=useState("");
-    const {error} =useSelector(state=>state.employeeData);
-    const [roomNumber,setRoomNumber]=useState();
-    const [employeeId,setEmployeeId]=useState();
-    const [beds,setBeds]=useState();
-    const [price,setPrice]=useState();
-    const [clean,setClean]=useState();
-    const [statue,setStatue]=useState();
-    const [type,setType]=useState();
+    const [success,setSuccess]=useState("");
+    const {error} =useSelector(state=>state.roomData)
+    const [roomNumber,setRoomNumber]=useState("");
+    const [employeeId,setEmployeeId]=useState("");
+    const [beds,setBeds]=useState("");
+    const [price,setPrice]=useState("");
+    const [clean,setClean]=useState("");
+    const [statue,setStatue]=useState("");
+    const [type,setType]=useState("");
     let dispatch=useDispatch();
    
     const {employees} =useSelector(state=>state.employeeData)
@@ -60,7 +61,7 @@ function AddRoom() {
             dataChart.push(
                 {
                     'label':data.name,
-                    'employeeId':data.employeeId,
+                    'employeeId':data.id,
                     'name':data.name,
                     'surname':data.surname,
                     'birthDate':data.birthDate,
@@ -84,7 +85,7 @@ const handleSubmit=(e)=>
 {e.preventDefault();
     const jsonData={
 'roomNumber':roomNumber.toString(),
-'employeeId':employeeId.toString(),
+'employeeId':employeeId,
 'beds':beds.toString(),
 'price':price.toString(),
 'clean':clean,
@@ -97,6 +98,7 @@ const handleSubmit=(e)=>
         setErrorW("Please Fill all fields");
     }
     else{
+        setSuccess("Succesfully Saved");
         dispatch(createRoom(jsonData));
         //navigate('/rooms');
         setErrorW("");
@@ -119,12 +121,12 @@ const handleSubmit=(e)=>
     <Typography level="h4" component="h1">
               <b>Add Room!</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
-              {error && <h3 style={{color:"red"}}>{error}</h3>}
+              {error ? <h3 style={{color:"red"}}>{error}</h3> : <h3 style={{color:"green"}}>{success}</h3>}
             </Typography>
    <div>
    <TextField 
       id="standard-basic" 
-      label="Price" 
+      label="Room Number" 
       variant="outlined" 
       value={roomNumber}  
       type="number" 

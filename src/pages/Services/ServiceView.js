@@ -2,10 +2,11 @@ import React,{useEffect, useState} from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import {useDispatch, useSelector} from 'react-redux';
 import { deleteService, loadServices } from './actions';
-import {  IconButton, Typography } from '@mui/material';
+import {  Fab, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
+import AddIcon from '@mui/icons-material/Add';
 
 function ServiceView() {
     const navigate = useNavigate();
@@ -20,15 +21,7 @@ const columns = [
   {field: 'buttons',headerName: 'Actions',width: 150,renderCell:(cellValues)=>{
     return(
         <div>
-        <IconButton aria-label="delete">
-  <DeleteIcon onClick={()=>{
-  if(window.confirm("Do you really wanna delete it?"))
-    {   
-        dispatch(deleteService(cellValues.id));
-        console.log(cellValues.id);
-    }
-  }}/>
-</IconButton> 
+       
   <IconButton aria-label="edit">
   <EditIcon onClick={() => {
     navigate("../editService/"+cellValues.id);
@@ -61,13 +54,15 @@ function getdata(datam)
 }
 
   return (
-    <div>
+    <div>  <Fab  href="/addService" sx={{ l:50,m:3 }} color="primary" aria-label="add" >
+    <AddIcon/> 
+  </Fab>
           <Typography level="h4" component="h1" sx={{ m:3 }}>
               <b  >Services</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
               {error && <h3 style={{color:"red"}}>{error}</h3>}
             </Typography>
-   
+          
     <div style={{ height: 500, width: '100%' }}>
 
       <DataGrid

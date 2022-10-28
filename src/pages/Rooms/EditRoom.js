@@ -14,7 +14,8 @@ import { GET_EMPLOYEE } from '../../redux/actionType';
 function EditRoom() {
     const navigate = useNavigate();
     const [errorW,setErrorW]=useState("");
-    const {error} =useSelector(state=>state.employeeData);
+    const [success,setSuccess]=useState("");
+    const {error} =useSelector(state=>state.roomData)
     const [roomNumber,setRoomNumber]=useState();
    
     const [beds,setBeds]=useState();
@@ -139,8 +140,7 @@ const handleSubmit=(e)=>
         setErrorW("Please Fill all fields");
     }
     else{
-        console.log("bak");
-        console.log(jsonData);
+        setSuccess("Succesfully Updated");
         dispatch(editRoom(jsonData,id));
         //navigate('/rooms');
         setErrorW("");
@@ -163,7 +163,7 @@ const handleSubmit=(e)=>
     <Typography level="h4" component="h1">
               <b>Edit Room!</b>
               {errorW && <h3 style={{color:"red"}}>{errorW}</h3>}
-              {error && <h3 style={{color:"red"}}>{error}</h3>}
+              {error ? <h3 style={{color:"red"}}>{error}</h3> : <h3 style={{color:"green"}}>{success}</h3>}
             </Typography>
             <div>
    <TextField 
