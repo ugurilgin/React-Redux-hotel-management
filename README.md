@@ -3,3 +3,4 @@
 * Redux
 * Redux Thunk
 * Material UI
+* Fetch
